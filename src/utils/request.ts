@@ -34,7 +34,7 @@ service.interceptors.request.use(
 
     }
     config.headers['accept-language'] =
-      localStorage.getItem('me-config-locale') ?? localeConfig.localeSetting.locale ?? 'vi-vn';
+      localStorage.getItem('me-config-locale') ?? localeConfig.localeSetting.locale ?? 'tgl-ph';
     return config;
   },
   (error) => {

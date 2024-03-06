@@ -11,7 +11,7 @@ const warningAlertBg = '#fffbe7';
 const useSettingStore = defineStore('setting', {
   state: () => ({
     themeConfig: useStorage(`${settingKey}-theme`, themeConfig, localStorage, { mergeDefaults: true }),
-    locale: useStorage(`${settingKey}-locale`, localeConfig.localeSetting.locale ?? 'vi-vn'),
+    locale: useStorage(`${settingKey}-locale`, localeConfig.localeSetting.locale ?? 'tgl-ph'),
     elLocale: undefined as Language | undefined,
     isDark: false,
     showSettingMenu: false,
