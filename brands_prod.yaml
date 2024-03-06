@@ -1,0 +1,9 @@
+brands:
+- deploy: agent-momovn
+  brand: MOMOVN
+  site: https://momo-bet.com/
+  lang: vi-vn
+- deploy: agent-moph
+  brand: MOPH
+  site: https://momobetph.com/
+  lang: vi-vn

@@ -1,0 +1,44 @@
+#https://docs.gitlab.com/ee/ci/docker/using_docker_build.html
+#https://forum.gitlab.com/t/error-cannot-perform-an-interactive-login-from-a-non-tty-device/59936/4
+#https://docs.gitlab.com/ee/user/clusters/agent/ci_cd_workflow.html
+variables:
+  config: "kubeconfig"
+stages:
+  - deploy
+.deploy-template: &deploy-template
+  stage: deploy
+  image: 
+    name: bitnami/kubectl:1.26
+    entrypoint: [""]
+  script:
+    - source get_tgs-env.sh
+    - export tgs_env=$(get_environment "$CI_COMMIT_REF_NAME")
+    - npm install --force
+    - export KUBECONFIG="${config}_${tgs_env}"
+    - export KUBECONFIG=${!KUBECONFIG}
+    - export Tag="$(date -d $CI_PIPELINE_CREATED_AT +%Y%m%d%H%M).$CI_PIPELINE_IID"
+    - export file="brands_${tgs_env}.yaml"
+    - YAML_CONTENT=$(cat ${file})
+    - deploy_brands
+
+deploy-dev:
+  <<: *deploy-template
+  environment:
+    name: dev
+  only: 
+    - develop
+
+deploy-staging:
+  <<: *deploy-template
+  environment:
+    name: staging
+  only: 
+    - release/current
+
+deploy-prod:
+  <<: *deploy-template
+  environment:
+    name: prod
+  only: 
+    - master
+  when: manual  

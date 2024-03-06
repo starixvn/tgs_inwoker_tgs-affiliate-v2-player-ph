@@ -1,93 +1,104 @@
-# tgs-affiliate-v2-player-ph
+## sample 
+
+![for example](/deployment/sample.png)*sample*
+
+# Me-admin template
+## 简介
+Me-admin template是一个免费开源的中后台模板,基于vue3、vite4、 pinia、 elment-plus构建，开箱即用，本项目的开源协议为最宽松的MIT协议，使用无任何限制，本项目采用最新技术栈，可以作为项目的启动模版，以帮助你快速搭建企业级中后台，也是一个很好的学习项目。
+
+开源不易，如果能帮到您，麻烦在[Github](https://github.com/meadmin-cn/meadmin-template)中点个star。
+
+**中文** | [English](./README_EN.md)
 
 
+## 特性
+ - **基于vue3、vite4、pinia、elment-plus、vue-request@next**
+ - **基于typescript** 应用级JavaScript 的语言
+ - **可配置主题** 可配置主题色及主题模式
+ - **友好的国际化方案** 基于vue-i18n 支持按组件异步加载语言包。
+ - **自定义keepAlive缓存** 可根据key进行vue keep-alive,解决不同路由使用同一组件不能独立刷新缓存问题
+ - **权限** 内置完善的动态路由权限生成方案，按钮级权限。支持前端菜单和接口动态获取菜单两种模式
+ - **Mock 数据** 内置mock数据方案便于测试
+ - **组件自动引入** 自动按需引入components下的组件定义，可以自定义引入模式和模板，真正的按需引入
+ - **便捷的类型自动生成** 自动生成ts type 最大程度减少工作量
+ - **友好的request封装** 基于vue-request+axios的request api封装和vue3响应式语法糖深度耦合。
+  
+## 预览
+- 完整版国外访问：[https://meadmin-cn.github.io/meadmin-template](https://meadmin-cn.github.io/meadmin-template)
+- 完整版国内访问：[https://meadmin-cn.gitee.io/meadmin-template](https://meadmin-cn.gitee.io/meadmin-template)
+  
+## 文档
+- 国外访问: [https://meadmin-cn.github.io/meadmin-template-doc](https://meadmin-cn.github.io/meadmin-template-doc)
+- 国内访问: [https://meadmin-cn.gitee.io/meadmin-template-doc](https://meadmin-cn.gitee.io/meadmin-template-doc)
+  
+## 分支
+- [main](https://github.com/meadmin-cn/meadmin-template/tree/main) 完整版
+- [template](https://github.com/meadmin-cn/meadmin-template/tree/template) 基础模板
 
-## Getting started
+## 仓库
+- [Github](https://github.com/meadmin-cn/meadmin-template)
+- [Gitee](https://gitee.com/meadmin-cn/meadmin-template)
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## 快速开始
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+ nodejs版本建议>=16.15.1
 
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
+- clone 代码
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/inwoker/tgs/tgs-affiliate-v2-player-ph.git
-git branch -M main
-git push -uf origin main
+git clone https://github.com/meadmin-cn/meadmin-template.git
+```
+- 安装依赖
+```
+    cd meadmin-template
+    npm install
+```
+- 本地运行
+```
+    npm run dev
+```
+- 打包
+```
+    npm run build
 ```
 
-## Integrate with your tools
+## 贡献代码
 
-- [ ] [Set up project integrations](https://gitlab.com/inwoker/tgs/tgs-affiliate-v2-player-ph/-/settings/integrations)
+- 只允许向main分支贡献代码，template分支由作者自行维护，如果template分支有bug提issus，作者会及时跟进。
+- main分支只允许对不在template分支中的文件(不包括语言包文件)/新文件贡献代码
+- 贡献代码统一在github而非gitee
+### Pull Request:
+1.Fork 代码!
 
-## Collaborate with your team
+2.创建自己的分支: `git checkout -b feat/xxxx`
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+3.初始化:(`npm run i`) 或( `npm install` `npx husky install`)
 
-## Test and Deploy
+4.提交修改: `git commit -am 'feat: add xxxxx'` (husky 会自动运行eslint --fix、prettier、type-check)
 
-Use the built-in continuous integration in GitLab.
+5.推送: `git push origin feat/xxxx`
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+6.提交`pull request`
 
-***
+## Git 贡献提交规范
+- 需符合 [commitlint](https://commitlint.js.org/#/concepts-commit-conventions)规范，建议安装`vscode`的`Conventional Commits`扩展
+  - `feat`  新功能
+  - `fix`  Bug 修复
+  - `chore` 杂物处理
+  - `docs` 文档更改
+  - `style` 样式更改
+  - `refactor` 重构
+  - `perf` 性能改进
+  - `test` 测试添加/更正
+  - `revert` 还原提交
+  - `ignore` 临时暂存可忽略
+  - `ci` CI发版
 
-# Editing this README
+## 打赏作者
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+作者还在为孩子奶粉钱苦苦挣扎，如果能帮到您欢迎打赏。打赏时请务必备注github name 后续会维护到打赏鸣谢列表
 
-## Suggestions for a good README
+![./payCode.jpg](https://gitee.com/meadmin-cn/meadmin-template/raw/main/payCode.jpg)
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
 
 ## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+[MIT © meadmin-cn](./LICENSE)

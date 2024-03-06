@@ -1,0 +1,31 @@
+image: node:latest
+
+stages:
+  - build
+  - deploy
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+build:
+  stage: build
+  script:
+    - npm install
+    - npm run build --BRAND=$BRAND --API_URL= --SITE=$SITE --DEFAULT_LANGUAGE=$DEFAULT_LANGUAGE
+  artifacts:
+    paths:
+      - dist/
+
+deploy:
+  stage: deploy
+  needs:
+    - build
+  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+ # rules:
+ #   - if: $CI_COMMIT_TAG                 # Run this job when a tag is created
+  script:
+    - echo "Running deploy"
+    - aws s3 cp ./dist s3://$S3_BUCKET/ --recursive
+    - echo "Deployment successful"

@@ -1,0 +1,5 @@
+brands:
+- deploy: agent-momotest
+  brand: MOMOTEST
+  site: https://dev-momotest.rpgp.cc/
+  lang: vi-vn
