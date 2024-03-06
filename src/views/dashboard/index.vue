@@ -38,9 +38,9 @@
             <div class="data">
               <div>{{ user.invitationCode }}</div>
               <el-button size="large" type="primary" class="custom-btn" :icon="CopyDocument" @click="() => {
-                performCopyText(user.invitationCode);
-              }
-                ">{{ $t('copy') }}</el-button>
+      performCopyText(user.invitationCode);
+    }
+      ">{{ $t('copy') }}</el-button>
             </div>
           </div>
           <div class="account-container">
@@ -60,11 +60,11 @@
                 </el-button>
               </router-link>
             -->
-              <router-link :to="{ name: 'player', path: '/player', query: { perform: 'add' } }">
+              <!-- <router-link :to="{ name: 'player', path: '/player', query: { perform: 'add' } }">
                 <el-button type="primary" class="custom-btn" size="large" icon="me-icon-addplayer">
                   {{ $t('addplayer') }}
                 </el-button>
-              </router-link>
+              </router-link> -->
 
               <custom-button />
             </div>
@@ -450,6 +450,7 @@ onMounted(async () => {
   }
 }
 </style>
+
 <style lang="scss">
 .custom-btn {
   .el-icon {
