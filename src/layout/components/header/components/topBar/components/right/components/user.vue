@@ -1,7 +1,7 @@
 <template>
   <div class="right-container">
     <div class="time-container" trigger="click">
-      <div>{{ currentTime }} (GMT+7)</div>
+      <div>{{ currentTime }} (GMT+8)</div>
     </div>
 
     <div>
@@ -33,11 +33,11 @@ import { ref, onMounted } from 'vue';
 const userStore = useUserStore();
 const globalStore = useGlobalStore();
 
-const currentTime = ref(moment().utcOffset(420).format('YYYY/MM/DD hh:mm A'));
+const currentTime = ref(moment().utcOffset(480).format('YYYY/MM/DD hh:mm A'));
 
 onMounted(() => {
   setInterval(() => {
-    currentTime.value = moment().utcOffset(420).format('YYYY/MM/DD hh:mm A');
+    currentTime.value = moment().utcOffset(480).format('YYYY/MM/DD hh:mm A');
   }, 1000);
 });
 </script>
