@@ -318,5 +318,6 @@
   "br_dividend": "Hoa hồng",
   "activenumber": "Người chơi hoạt động",
   "netprofit": "Lợi nhuận ròng",
-  "configdividendpercentage": "Tỉ lệ phân chia lợi nhuận"
+  "configdividendpercentage": "Tỉ lệ phân chia lợi nhuận",
+  "platformCharge": "Phí nền tảng"
 }

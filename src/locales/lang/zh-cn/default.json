@@ -335,5 +335,6 @@
 
   "activenumber": "活躍玩家",
   "netprofit": "淨利潤",
-  "configdividendpercentage": "利潤分享百分比"
+  "configdividendpercentage": "利潤分享百分比",
+  "platformCharge": "平台费用"
 }
