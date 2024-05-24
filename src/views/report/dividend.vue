@@ -251,6 +251,10 @@ interface DataColumn {
     isShow: boolean;
     mustShow: boolean;
   };
+  productFeeAmount: {
+    isShow: boolean;
+    mustShow: boolean;
+  }
 }
 interface SummaryMethodProps<T = ISubitems> {
   columns: TableColumnCtx<T>[];
