@@ -1,10 +1,10 @@
 import { request, RequestOptions } from '@/utils/request';
 
 export interface AgentWinlossReportParams extends BasePageParams {
-  username : string;
+  username: string;
   memberType: string;
   downLine: boolean;
-  from : string;
+  from: string;
   to: string;
 }
 export interface AgentWinlossReportResult extends BaseResult {
@@ -47,6 +47,7 @@ export interface AgentPlayerSpecialDetailData {
   bonus: number;
   bonusAdjust: number;
   productFee: number;
+  platformCharge: number;
 }
 
 export class AgentTotalDetailParams {
@@ -84,10 +85,10 @@ export interface CompanyTotalDetailData {
 }
 
 export interface RoundsParams extends BasePageParams {
-[x: string]: any;
+  [x: string]: any;
   playerCode: string;
-  closedFrom : string;
-  closedTo : string;
+  closedFrom: string;
+  closedTo: string;
 }
 export interface RoundsResult extends BaseResult {
   data: {
@@ -99,8 +100,7 @@ export interface RoundsResult extends BaseResult {
     valid: boolean;
   };
 }
-export interface RoundsData extends RoundsTotalData{
-
+export interface RoundsData extends RoundsTotalData {
   closedOn: string;
   createdOn: string;
   externalRoundId: string;
@@ -113,7 +113,6 @@ export interface RoundsData extends RoundsTotalData{
   status: number;
   subGameProviderName: string;
   turnover: number;
-
 }
 export interface RoundsTotalData {
   betAmount: number;
@@ -121,19 +120,19 @@ export interface RoundsTotalData {
   validBetAmount: number;
   winLoss: number;
 }
-export interface ExportResult {
+// export interface ExportResult {
 
-}
+// }
 
-export interface BreadcrumbParams{
+export interface BreadcrumbParams {
   username: string;
   memberType: string;
   roundId: string;
 }
-export interface BreadcrumbResult{
-  data:BreadcrumbData[]
+export interface BreadcrumbResult {
+  data: BreadcrumbData[];
 }
-export interface BreadcrumbData{
+export interface BreadcrumbData {
   username: string;
   memberType: string;
   id: string;
@@ -187,10 +186,7 @@ export function companyTotalDetailApi(
   );
 }
 
-
-export function roundsApi(
-  options: RequestOptions<RoundsResult, [RoundsParams]> = {},
-) {
+export function roundsApi(options: RequestOptions<RoundsResult, [RoundsParams]> = {}) {
   return request(
     (params) => ({
       url: 'agentwinlossreport/rounds',
@@ -201,38 +197,29 @@ export function roundsApi(
   );
 }
 
-
-
-export function exportAgentWinLossApi(
-  options: RequestOptions<any, [AgentWinlossReportParams]> = {},
-) {
+export function exportAgentWinLossApi(options: RequestOptions<any, [AgentWinlossReportParams]> = {}) {
   return request(
     (params) => ({
       url: 'agentwinlossreport/exportAgentWinLoss',
       method: 'get',
       params: params,
     }),
-    Object.assign({ noLoading: false ,needAll: true,isFile:true }, options),
+    Object.assign({ noLoading: false, needAll: true, isFile: true }, options),
   );
 }
 
-export function exportRoundsApi(
-  options: RequestOptions<any, [RoundsParams]> = {},
-) {
+export function exportRoundsApi(options: RequestOptions<any, [RoundsParams]> = {}) {
   return request(
     (params) => ({
       url: 'agentwinlossreport/exportRounds',
       method: 'get',
       params: params,
     }),
-    Object.assign({ noLoading: false,needAll: true,isFile:true  }, options),
+    Object.assign({ noLoading: false, needAll: true, isFile: true }, options),
   );
 }
 
-
-export function breadcrumbApi(
-  options: RequestOptions<BreadcrumbResult, [BreadcrumbParams]> = {},
-) {
+export function breadcrumbApi(options: RequestOptions<BreadcrumbResult, [BreadcrumbParams]> = {}) {
   return request(
     (params) => ({
       url: 'agentwinlossreport/breadcrumb',

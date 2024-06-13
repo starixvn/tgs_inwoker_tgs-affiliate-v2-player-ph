@@ -93,6 +93,8 @@
               :formatter="formatPrice" width="120" />
             <el-table-column v-if="tableColumn.netProfit.isShow" prop="netProfit" :label="t('netProfit')" align="right"
               :formatter="formatPrice" width="120" />
+            <el-table-column v-if="tableColumn.productFeeAmount.isShow" prop="productFeeAmount" :label="t('productFee')" align="right"
+            :formatter="formatPrice" width="120" />
             <el-table-column :label="t('contribution')" align="center" v-if="tableColumn.contribution.isShow">
               <el-table-column prop="fromPlayerAgentDividendAmount" :label="t('player')" align="right"
                 :formatter="formatPrice" />
@@ -249,6 +251,10 @@ interface DataColumn {
     isShow: boolean;
     mustShow: boolean;
   };
+  productFeeAmount: {
+    isShow: boolean;
+    mustShow: boolean;
+  }
 }
 interface SummaryMethodProps<T = ISubitems> {
   columns: TableColumnCtx<T>[];
@@ -318,6 +324,10 @@ export default defineComponent({
           isShow: true,
           mustShow: false,
         },
+        productFeeAmount: {
+          isShow: true,
+          mustShow: false,
+        }
       }),
       legends: [
         'rl_bonusAmount',

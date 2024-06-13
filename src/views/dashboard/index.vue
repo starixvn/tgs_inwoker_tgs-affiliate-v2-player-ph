@@ -74,7 +74,7 @@
             <div>{{ $t('referralQRCode') }}</div>
             <div class="qrcode-container">
               <div>
-                <vue-qrcode id="testonly" :value="affiliatelink" :options="{ width: 250 }"></vue-qrcode>
+                <vue-qrcode id="testonly" :value="affiliatelink" :options="{ width: vueQrcodeSize }"></vue-qrcode>
               </div>
               <div class="qrcode-button">
                 <el-button class="custom-btn" type="primary" size="large" :icon="Download" style="width: 100%"
@@ -147,6 +147,13 @@ import VueQrcode from '@chenfengyuan/vue-qrcode';
 import { onMounted } from 'vue';
 import { useLocalesI18n } from '@/locales/hooks';
 import { getInfoApi, InfoData } from '@/api/agentTeam';
+import { useWindowSize } from '@vueuse/core'
+
+const { width } = useWindowSize()
+
+const vueQrcodeSize = computed(() => {
+  return width.value > 465 ? 250 : 150
+})
 
 let teamData = reactive<InfoData>({
   directAgentCount: 0,

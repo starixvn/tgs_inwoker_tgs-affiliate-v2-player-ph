@@ -39,8 +39,8 @@
               v-model="searchForm.dateRange"
               type="daterange"
               size="large"
-              @change="daterangeChange"
               :disabled-date="disabledDate"
+              @change="daterangeChange"
             />
           </el-form-item>
           <el-form-item>
@@ -54,7 +54,7 @@
             >
 
             <el-button type="primary" size="large" class="custom-icon" @click="onExport()">
-              <img :src="getImgUrl('save')" id="saveIcon" />
+              <img id="saveIcon" :src="getImgUrl('save')" />
             </el-button>
           </el-form-item>
         </el-form>
@@ -66,12 +66,12 @@
         <div class="legends">
           <div>
             <el-button
+              id="warningButton"
               size="small"
               class="custom-icon"
               circle
               type="primary"
               @click="showlegends = !showlegends"
-              id="warningButton"
             >
               <img id="warningIcon" :src="getImgUrl('warning')" />
             </el-button>
@@ -105,13 +105,13 @@
           <el-table :data="tableData" :span-method="arraySpanMethod" :row-class-name="getRowClassName" stripe resizable>
             <el-table-column :label="t('username')">
               <template #default="scope">
-                <a class="next-level" @click="onClickNext(scope.row.username)" v-if="scope.row.memberType === 'agent'">
+                <a v-if="scope.row.memberType === 'agent'" class="next-level" @click="onClickNext(scope.row.username)">
                   {{ scope.row.username }}
                 </a>
                 <a
+                  v-if="scope.row.memberType === 'player'"
                   class="next-level"
                   @click="onClickPlayerRound(scope.row.username, scope.row.id)"
-                  v-if="scope.row.memberType === 'player'"
                 >
                   {{ scope.row.username }}
                 </a>
@@ -130,9 +130,9 @@
                   <el-popover placement="right" :width="400" trigger="click">
                     <template #reference>
                       <div
+                        v-if="scope.row.memberType === 'agent'"
                         class="details-view"
                         @click="onViewDetails(0, scope.row.id)"
-                        v-if="scope.row.memberType === 'agent'"
                       >
                         <el-icon style="" color="#07b5bc">
                           <mel-icon-plus />
@@ -153,17 +153,12 @@
                         <td class="right">{{ formatPrice2(agentPlayerSpecialDetailData.bonusAdjust) }}</td>
                       </tr>
                       <tr>
-                        <td>{{ t('productFee') }}</td>
-                        <td class="right">{{ formatPrice2(agentPlayerSpecialDetailData.productFee) }}</td>
-                      </tr>
-                      <tr>
                         <th>{{ t('total') }}</th>
                         <th class="right">
                           {{
                             formatPrice2(
                               agentPlayerSpecialDetailData.bonus +
-                                agentPlayerSpecialDetailData.bonusAdjust +
-                                agentPlayerSpecialDetailData.productFee,
+                              agentPlayerSpecialDetailData.bonusAdjust 
                             )
                           }}
                         </th>
@@ -184,9 +179,9 @@
                   <el-popover placement="right" :width="800" trigger="click">
                     <template #reference>
                       <div
+                        v-if="scope.row.memberType === 'agent'"
                         class="details-view"
                         @click="onViewDetails(1, scope.row.id)"
-                        v-if="scope.row.memberType === 'agent'"
                       >
                         <el-icon style="" color="#07b5bc">
                           <mel-icon-plus />
@@ -251,9 +246,9 @@
                   <el-popover placement="right" :width="800" trigger="click">
                     <template #reference>
                       <div
+                        v-if="scope.row.memberType === 'agent'"
                         class="details-view"
                         @click="onViewDetails(2, scope.row.id)"
-                        v-if="scope.row.memberType === 'agent'"
                       >
                         <el-icon style="" color="#07b5bc">
                           <mel-icon-plus />
@@ -515,6 +510,7 @@ export default defineComponent({
         bonus: 0,
         bonusAdjust: 0,
         productFee: 0,
+        platformCharge: 0,
       }),
       tableData: reactive<any[]>([]),
       totalRowCount: 0,
